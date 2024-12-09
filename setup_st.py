@@ -1,7 +1,6 @@
 # Example of a setup_st.py file which is called in your main file to setup the UI/UX and initialize the session
 import streamlit as st
 from openai import OpenAI
-import os
 
 #1. Function to set up the page's layout and design elements
 def set_design():
@@ -10,10 +9,7 @@ def set_design():
     # The main logo will be displayed in the middle column
     with col2:
         # Loading and displaying a logo image from the repository, and centering it
-        st.image(r"C:\Users\user\Downloads\chatbot\logo.jpg", use_column_width=True)
-
-    # Adding a title to the Streamlit app, center-aligned
-    st.markdown("<p style='text-align: center; font-size: 30px;'><b>Rose's Prototype AI Chatbot!</b></p>", unsafe_allow_html=True)
+        st.image(r"C:\Users\user\Downloads\chatbot\logo.jpg", use_container_width=True)
 
 # 2. Function to initialize variables that will hold the state of the app (illustrative list, not complete)
 def initialize_session_state():
