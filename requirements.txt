@@ -1,5 +1,4 @@
 streamlit
 openai
 
-API key:
-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
+API key: you need to pay 5 dollas to open ai LOL
