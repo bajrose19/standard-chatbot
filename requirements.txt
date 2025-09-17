@@ -1,4 +1,5 @@
 streamlit
 openai
 
-API key: you need to pay 5 dollas to open ai LOL
+API key:
+must get it on openai source in your own account.
