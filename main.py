@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 from setup_st import *
-from index_functions import generate_response_openai
+from index_functions import generate_response_gemini
 
 # Page setup
 st.title("Rose's Prototype AI Chatbot")
@@ -12,20 +12,20 @@ clear_button()
 download_button()
 get_user_config()
 
-#ensure OpenAI client is set
-client = st.session_state.get('openai_client')
-if not client:
-    st.warning("Please enter and validate your OpenAI API key in the sidebar.")
+# Ensure Gemini API key is set
+api_key = st.session_state.get('api_key')
+if not api_key:
+    st.warning("Please enter and validate your Gemini API key in the sidebar.")
     st.stop()
 
-#display existing chat messages
+# Display existing chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-#accept user input
+# Accept user input
 if prompt := st.chat_input("Enter your message:"):
-    #show user message
+    # Show user message
     with st.chat_message("user"):
         st.markdown(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -34,13 +34,13 @@ if prompt := st.chat_input("Enter your message:"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         try:
-            full_response = generate_response_openai(
-                client=client,
+            full_response = generate_response_gemini(
+                api_key=api_key,
                 prompt=prompt,
                 temperature=st.session_state['temperature'],
-                model=st.session_state['model_name']
+                model=st.session_state.get('model_name', 'gemini-1.5-pro')
             )
-            #typing effect
+            # Typing effect
             displayed = ""
             for word in full_response.split():
                 displayed += word + " "
