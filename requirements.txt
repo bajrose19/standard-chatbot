@@ -1,5 +1,5 @@
 streamlit
-openai
+gemini
 
 API key:
-must get it on openai source in your own account.
+get from your google gemini account (its free!)
